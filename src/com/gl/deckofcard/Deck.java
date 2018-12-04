@@ -1,4 +1,4 @@
-package com.gl;
+package com.gl.deckofcard;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.gl;
+package com.gl.deckofcard;
 
 public class Card {
     private String value;

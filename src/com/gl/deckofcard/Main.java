@@ -1,4 +1,4 @@
-import com.gl.Deck;
+package com.gl.deckofcard;
 
 public class Main {
 
@@ -7,6 +7,7 @@ public class Main {
         Deck deck =new Deck();
         String card = deck.getCard().getValue();
         String card1 = deck.getCard().getValue();
+        System.out.println(card+"\n\r"+card1 );
         System.out.println(deck.getSize());
     }
 }
