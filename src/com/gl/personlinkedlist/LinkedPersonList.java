@@ -3,19 +3,34 @@ package com.gl.personlinkedlist;
 
 import java.util.LinkedList;
 
-public class LinkedPersonList  {
+public class LinkedPersonList {
     private Person first;
     private Person last;
+    private Person current;
+
+    public Person getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Person current) {
+        this.current = current;
+    }
+
+    public Person goNext() {
+        return current.getNext();
+    }
 
     @Override
     public String toString() {
+        String result = null;
+        while (hasNext()) {
+            result += current.toString();
+            current = goNext();
+        }
         return "LinkedPersonList{" +
-                "linkedPersons=" + linkedPersons +
+                "linkedPersons=" + result +
                 '}';
     }
-
-    private LinkedList<Person> linkedPersons = new LinkedList<Person>();
-
 
     public Person getFirst() {
         return first;
@@ -34,44 +49,89 @@ public class LinkedPersonList  {
         this.last = last;
     }
 
-    public boolean addPerson(Person person) {
-        return linkedPersons.add(person);
+    public boolean hasNext() {
+        if (current.getNext() != null) {
+            return true;
+        }
+
+        return false;
     }
 
-    public LinkedList<Person> getLinkedPersons() {
-        return linkedPersons;
+    public void addPerson(Person person) {
+        if (first == null) {
+            first = person;
+            current = person;
+            last = person;
+        }
+        last.setNext(person);
+        last=person;
     }
 
-    public void addToHead(Person person) {
-        linkedPersons.addFirst(person);
+    public void addToHead(Person head) {
+        head.setNext(first);
+        first = head;
     }
 
     public void addByIndex(int index, Person person) {
-        linkedPersons.add(index, person);
+        if (first == null) {
+            System.out.println("No Person ");
+        }
+        Person currentPerson = first;
+        for (int i = 0; i < index; i++) {
+            if (currentPerson.getNext() != null) {
+                currentPerson = currentPerson.getNext();
+            } else System.out.println("No item by index" + i);
+        }
+        person.setNext(currentPerson.getNext());
+        currentPerson.setNext(person);
     }
 
     public boolean remove(Person person) {
-        return linkedPersons.remove(person);
+        Person currentPerson = first;
+        while (!currentPerson.equals(person) && currentPerson.getNext() != null) {
+            currentPerson = currentPerson.getNext();
+        }
+        return false;
     }
 
-    public boolean removeFirst(Person person) {
-        return linkedPersons.removeFirstOccurrence(person);
+    public boolean removeFirst() {
+        if (first != null && first.getNext() != null) {
+            first = first.getNext();
+            current = first;
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
-    public boolean removeLast(Person person) {
-        return linkedPersons.removeLastOccurrence(person);
+    public boolean removeLast() {
+        current = first;
+        while ((current.getNext()).getNext() != null) {
+            current = current.getNext();
+        }
+        current.setNext(null);
+        last = current;
+        return true;
     }
 
 
     public boolean removeByIndex(int index) {
-
-        Person personFind = (Person) linkedPersons.get(index);
-
-        if (personFind != null) {
-            return linkedPersons.remove(personFind);
+        if (first == null) {
+            System.out.println("No Person");
+        }
+        current = first;
+        for (int i = 0; i < index; i++) {
+            if (current.getNext() != null) {
+                current = current.getNext();
+            } else System.out.println("No item by index" + i);
+        }
+        Person next = (current.getNext()).getNext();
+        if (next != null) {
+            current.setNext(next);
         } else {
-            System.out.println("Can not find Person");
-            return false;}
+            current.setNext(null);
+        }
+        return true;
     }
 }
