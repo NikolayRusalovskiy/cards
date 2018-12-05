@@ -30,6 +30,21 @@ public class Main {
         lllll.addPerson(new Person ("Katya4", 31));
         lllll.addPerson(new Person ("Katya5", 31));
         lllll.addPerson(new Person ("Katya6", 43));
+        System.out.println("---------Удалить первый элемент (0)---------------------------->>>>>>>>>>>>>>>>>>>>>>>>");
+        ll.remove(new Person ("Katya1", 23));
+        System.out.println(ll);
+        System.out.println("-----------------------Удалить средний элемент 3-------------->>>>>>>>>>>>>>>>>>>>>>>>");
+        lll.remove (new Person ("Katya3", 31));
+        System.out.println(lll);
+        System.out.println("-----------------------Удалить последний элемент 6-------------->>>>>>>>>>>>>>>>>>>>>>>>");
+        llll.remove (new Person ("Katya6", 43));
+        System.out.println(llll);
+        System.out.println("-----------------------Удалить сверх границы элемент-------------->>>>>>>>>>>>>>>>>>>>>>>>");
+        lllll.remove (new Person ("Katya00", 43));
+        System.out.println(lllll);
+
+
+
 //        System.out.println("---------Удалить первый элемент (0)---------------------------->>>>>>>>>>>>>>>>>>>>>>>>");
 //        ll.removeByIndex(0);
 //        System.out.println(ll);
