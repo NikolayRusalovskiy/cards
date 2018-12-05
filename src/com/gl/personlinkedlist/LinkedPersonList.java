@@ -12,24 +12,23 @@ public class LinkedPersonList {
         return current;
     }
 
+    @Override
+    public String toString() {
+        String result=null;
+        current=first;
+        while (current !=null){
+            result+= current+"\r\n";
+            current=current.getNext();
+        }
+        return result;
+    }
+
     public void setCurrent(Person current) {
         this.current = current;
     }
 
     public Person goNext() {
         return current.getNext();
-    }
-
-    @Override
-    public String toString() {
-        String result = null;
-        while (hasNext()) {
-            result += current.toString();
-            current = goNext();
-        }
-        return "LinkedPersonList{" +
-                "linkedPersons=" + result +
-                '}';
     }
 
     public Person getFirst() {
