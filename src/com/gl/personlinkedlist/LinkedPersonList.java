@@ -77,7 +77,7 @@ public class LinkedPersonList {
         if (first == null) {
             System.out.println("No Person ");
         }
-        if(index==1){
+        if (index == 1) {
             addToHead(person);
             return;
         }
@@ -96,12 +96,27 @@ public class LinkedPersonList {
         current.setNext(person);
     }
 
-    public boolean remove(Person person) {
-        Person currentPerson = first;
-        while (!currentPerson.equals(person) && currentPerson.getNext() != null) {
-            currentPerson = currentPerson.getNext();
+    public void remove(Person person) {
+        if (first.equals(person)) {
+            removeFirst();
+            return;
         }
-        return false;
+        if (last.equals(person)) {
+            removeLast();
+            return;
+        }
+        current = first;
+        while (!(current.getNext()).equals(person)) {
+            if (current.getNext().getNext() == null) {
+                System.out.println("No such Person in the Box");
+                return;
+            }
+            current = current.getNext();
+
+        }
+        if ((current.getNext()).getNext() != null) {
+            current.setNext((current.getNext()).getNext());
+        }
     }
 
     public boolean removeFirst() {
@@ -126,22 +141,29 @@ public class LinkedPersonList {
     }
 
 
-    public boolean removeByIndex(int index) {
+    public void removeByIndex(int index) {
         if (first == null) {
             System.out.println("No Person");
         }
         current = first;
-        for (int i = 0; i < index; i++) {
+        if (index == 0) {
+            removeFirst();
+        }
+        for (int i = 1; i < index-1; i++) {
+            System.out.println(i);
             if (current.getNext() != null) {
                 current = current.getNext();
-            } else System.out.println("No item by index" + i);
+            } else {
+                System.out.println("No item by index" + i);
+                return;
+            }
         }
-        Person next = (current.getNext()).getNext();
-        if (next != null) {
+
+        if ((current.getNext())!=null) {
+            Person next = (current.getNext()).getNext();
             current.setNext(next);
         } else {
             current.setNext(null);
         }
-        return true;
     }
 }
