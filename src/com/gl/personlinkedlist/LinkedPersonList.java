@@ -77,8 +77,12 @@ public class LinkedPersonList {
         if (first == null) {
             System.out.println("No Person ");
         }
+        if(index==1){
+            addToHead(person);
+            return;
+        }
         current = first;
-        for (int i = 0; i < index; i++) {
+        for (int i = 2; i < index; i++) {
             if (current.getNext() != null) {
                 current = current.getNext();
             } else {
