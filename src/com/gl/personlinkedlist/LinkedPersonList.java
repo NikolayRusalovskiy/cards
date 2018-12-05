@@ -1,9 +1,6 @@
 package com.gl.personlinkedlist;
 
-
-import java.util.LinkedList;
-
-public class LinkedPersonList {
+class LinkedPersonList {
     private Person first;
     private Person last;
     private Person current;
@@ -16,9 +13,9 @@ public class LinkedPersonList {
     public String toString() {
         String result = "";
         current = first;
-        while (current.getNext() != null) {
+        while (hasNext()) {
             result += current + "\r\n";
-            current = current.getNext();
+            current = goNext();
         }
         result += current;
         return result;
@@ -67,7 +64,7 @@ public class LinkedPersonList {
         last = person;
     }
 
-    public void addToHead(Person head) {
+    private void addToHead(Person head) {
         head.setNext(first);
         first = head;
     }
@@ -83,15 +80,15 @@ public class LinkedPersonList {
         }
         current = first;
         for (int i = 2; i < index; i++) {
-            if (current.getNext() != null) {
-                current = current.getNext();
+            if (hasNext()) {
+                current = goNext();
             } else {
                 System.out.println("No item by index " + (i + 1));
                 return;
             }
         }
-        if (current.getNext() != null) {
-            person.setNext(current.getNext());
+        if (hasNext()) {
+            person.setNext(goNext());
         }
         current.setNext(person);
     }
@@ -119,7 +116,7 @@ public class LinkedPersonList {
         }
     }
 
-    public boolean removeFirst() {
+    private boolean removeFirst() {
         if (first != null && first.getNext() != null) {
             first = first.getNext();
             current = first;
@@ -130,10 +127,10 @@ public class LinkedPersonList {
     }
 
 
-    public boolean removeLast() {
+    private boolean removeLast() {
         current = first;
         while ((current.getNext()).getNext() != null) {
-            current = current.getNext();
+            current = goNext();
         }
         current.setNext(null);
         last = current;
@@ -149,17 +146,17 @@ public class LinkedPersonList {
         if (index == 0) {
             removeFirst();
         }
-        for (int i = 1; i < index-1; i++) {
+        for (int i = 1; i < index - 1; i++) {
             System.out.println(i);
-            if (current.getNext() != null) {
-                current = current.getNext();
+            if (hasNext()) {
+                current = goNext();
             } else {
                 System.out.println("No item by index" + i);
                 return;
             }
         }
 
-        if ((current.getNext())!=null) {
+        if ((current.getNext()) != null) {
             Person next = (current.getNext()).getNext();
             current.setNext(next);
         } else {
