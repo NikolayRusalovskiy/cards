@@ -14,13 +14,13 @@ public class LinkedPersonList {
 
     @Override
     public String toString() {
-        String result=null;
-        current=first;
-        while (current.getNext() !=null){
-            result+= current+"\r\n";
-            current=current.getNext();
+        String result = "";
+        current = first;
+        while (current.getNext() != null) {
+            result += current + "\r\n";
+            current = current.getNext();
         }
-        result+= current;
+        result += current;
         return result;
     }
 
@@ -64,7 +64,7 @@ public class LinkedPersonList {
             last = person;
         }
         last.setNext(person);
-        last=person;
+        last = person;
     }
 
     public void addToHead(Person head) {
@@ -73,17 +73,23 @@ public class LinkedPersonList {
     }
 
     public void addByIndex(int index, Person person) {
+        //todo Шото тут не  так
         if (first == null) {
             System.out.println("No Person ");
         }
-        Person currentPerson = first;
+        current = first;
         for (int i = 0; i < index; i++) {
-            if (currentPerson.getNext() != null) {
-                currentPerson = currentPerson.getNext();
-            } else System.out.println("No item by index" + i);
+            if (current.getNext() != null) {
+                current = current.getNext();
+            } else {
+                System.out.println("No item by index " + (i + 1));
+                return;
+            }
         }
-        person.setNext(currentPerson.getNext());
-        currentPerson.setNext(person);
+        if (current.getNext() != null) {
+            person.setNext(current.getNext());
+        }
+        current.setNext(person);
     }
 
     public boolean remove(Person person) {
