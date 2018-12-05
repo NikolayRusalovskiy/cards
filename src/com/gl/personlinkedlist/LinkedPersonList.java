@@ -16,10 +16,11 @@ public class LinkedPersonList {
     public String toString() {
         String result=null;
         current=first;
-        while (current !=null){
+        while (current.getNext() !=null){
             result+= current+"\r\n";
             current=current.getNext();
         }
+        result+= current;
         return result;
     }
 
