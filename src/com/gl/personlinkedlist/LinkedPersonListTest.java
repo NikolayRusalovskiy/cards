@@ -3,7 +3,7 @@ package com.gl.personlinkedlist;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LinkedPersonListTest {
+public class LinkedPersonListTest{
     LinkedPersonList emptylinkedPersonList = new LinkedPersonList();
     LinkedPersonList linkedPersonList;
     Person random = new Person("Random", 88);
@@ -83,35 +83,19 @@ public class LinkedPersonListTest {
         linkedPersonList.addByIndex(7,random);
         assert equalsP2P(linkedPersonList.getByIndex(7),random);
     }
+    @Test
+    public void removeLastTest(){
+        linkedPersonList.removeLast();
+        assert equalsP2P(linkedPersonList.getLast(),new Person("Katya5", 31));
+    }
+    @Test
+    public void removeFirstTest(){
+        linkedPersonList.removeFirst();
+        assert equalsP2P(linkedPersonList.getFirst(),new Person("Katya2", 33));
+    }
+    @Test
+    public void removeByIndex(){
+        linkedPersonList.removeByIndex(3);
+        assert  equalsP2P(linkedPersonList.getByIndex(3),new Person("Katya4", 31));
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

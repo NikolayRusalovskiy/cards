@@ -25,7 +25,7 @@ class LinkedPersonList {
         this.current = current;
     }
 
-    public Person goNext() {
+    private Person goNext() {
         return current.getNext();
     }
 
@@ -50,7 +50,6 @@ class LinkedPersonList {
         if (current != null && current.getNext() != null) {
             return true;
         }
-
         return false;
     }
 
@@ -77,9 +76,8 @@ class LinkedPersonList {
                 current = goNext();
             } else {
                 System.out.println("No more index");
-                return new Person("No more index",0);
+                return new Person("No more index", 0);
             }
-
         }
         return current;
     }
@@ -123,14 +121,13 @@ class LinkedPersonList {
                 return;
             }
             current = current.getNext();
-
         }
         if ((current.getNext()).getNext() != null) {
             current.setNext((current.getNext()).getNext());
         }
     }
 
-    private boolean removeFirst() {
+    public boolean removeFirst() {
         if (first != null && first.getNext() != null) {
             first = first.getNext();
             current = first;
@@ -140,8 +137,7 @@ class LinkedPersonList {
         }
     }
 
-
-    private boolean removeLast() {
+    public boolean removeLast() {
         current = first;
         while ((current.getNext()).getNext() != null) {
             current = goNext();
@@ -150,7 +146,6 @@ class LinkedPersonList {
         last = current;
         return true;
     }
-
 
     public void removeByIndex(int index) {
         if (first == null) {
@@ -169,7 +164,6 @@ class LinkedPersonList {
                 return;
             }
         }
-
         if ((current.getNext()) != null) {
             Person next = (current.getNext()).getNext();
             current.setNext(next);
