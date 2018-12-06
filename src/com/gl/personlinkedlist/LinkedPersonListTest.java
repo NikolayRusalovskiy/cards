@@ -1,6 +1,5 @@
 package com.gl.personlinkedlist;
 
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -64,11 +63,25 @@ public class LinkedPersonListTest {
         assert equalsP2P(person, new Person("No more index",0));
     }
 
-
+    @Test
+    public void addByIndexToFirstTest(){
+        linkedPersonList.addByIndex(1,random);
+        assert equalsP2P(linkedPersonList.getByIndex(1),random);
+    }
     @Test
     public void addByIndexToMiddleTest(){
         linkedPersonList.addByIndex(3,random);
         assert equalsP2P(linkedPersonList.getByIndex(3),random);
+    }
+    @Test
+    public void addByIndexToLastItemTest(){
+        linkedPersonList.addByIndex(6,random);
+        assert equalsP2P(linkedPersonList.getByIndex(6),random);
+    }
+    @Test
+    public void addByIndexToLastTest(){
+        linkedPersonList.addByIndex(7,random);
+        assert equalsP2P(linkedPersonList.getByIndex(7),random);
     }
 }
 
