@@ -47,7 +47,7 @@ class LinkedPersonList {
     }
 
     public boolean hasNext() {
-        if (current.getNext() != null) {
+        if (current != null && current.getNext() != null) {
             return true;
         }
 
@@ -59,12 +59,13 @@ class LinkedPersonList {
             first = person;
             current = person;
             last = person;
+            return;
         }
         last.setNext(person);
         last = person;
     }
 
-    private void addToHead(Person head) {
+    public void addToHead(Person head) {
         head.setNext(first);
         first = head;
     }
