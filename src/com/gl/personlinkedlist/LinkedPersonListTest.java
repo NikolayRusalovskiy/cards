@@ -8,6 +8,7 @@ public class LinkedPersonListTest {
     LinkedPersonList emptylinkedPersonList = new LinkedPersonList();
     LinkedPersonList linkedPersonList;
     Person random = new Person("Random", 88);
+
     private boolean equalsP2P(Person fromList, Person to) {
         return fromList.toString().equalsIgnoreCase(to.toString());
     }
@@ -27,14 +28,77 @@ public class LinkedPersonListTest {
     public void addPersonFirstTest() {
         Person person = new Person("Katya1", 23);
         emptylinkedPersonList.addPerson(person);
-        assert equalsP2P(emptylinkedPersonList.getFirst(),person);
+        assert equalsP2P(emptylinkedPersonList.getFirst(), person);
     }
 
-@Test
-    public void addToHeadTest(){
+    @Test
+    public void addToHeadTest() {
         linkedPersonList.addToHead(random);
-        assert equalsP2P(linkedPersonList.getFirst(),random);
+        assert equalsP2P(linkedPersonList.getFirst(), random);
+    }
+
+    @Test
+    public void addByIndexFirstTest(){
+        linkedPersonList.addByIndex(1,random);
+        assert equalsP2P(linkedPersonList.getFirst(), random);
+    }
+
+    @Test
+    public void getByIndexFirstTest(){
+        Person person= linkedPersonList.getByIndex(1);
+        assert equalsP2P(person, new Person("Katya1", 23));
+    }
+    @Test
+    public void getByIndexMiddleTest(){
+        Person person= linkedPersonList.getByIndex(3);
+        assert equalsP2P(person, new Person("Katya3", 31));
+    }
+    @Test
+    public void getByIndexlastTest(){
+        Person person= linkedPersonList.getByIndex(6);
+        assert equalsP2P(person,new Person("Katya6", 43) );
+    }
+    @Test
+    public void getByIndexAnyTest(){
+        Person person= linkedPersonList.getByIndex(7);
+        assert equalsP2P(person, new Person("No more index",0));
+    }
+
+
+    @Test
+    public void addByIndexToMiddleTest(){
+        linkedPersonList.addByIndex(3,random);
+        assert equalsP2P(linkedPersonList.getByIndex(3),random);
+    }
 }
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

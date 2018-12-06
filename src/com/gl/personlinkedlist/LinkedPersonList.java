@@ -70,8 +70,21 @@ class LinkedPersonList {
         first = head;
     }
 
+    public Person getByIndex(int index) {
+        current = first;
+        for (int i = 1; i < index; i++) {
+            if (hasNext()) {
+                current = goNext();
+            } else {
+                System.out.println("No more index");
+                return new Person("No more index",0);
+            }
+
+        }
+        return current;
+    }
+
     public void addByIndex(int index, Person person) {
-        //todo Шото тут не  так
         if (first == null) {
             System.out.println("No Person ");
         }
